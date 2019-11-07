@@ -12,7 +12,7 @@ if ENV["GITHUB_EVENT_NAME"] == "pull_request"
   commits.each do |commit|
     `git config user.email "#{commit["commit"]["author"]["email"]}"`
     `git config user.name "#{commit["commit"]["author"]["name"]}"`
-    `git cherry-pick #{commit["sha"]}`
+    `git cherry-pick "#{commit["sha"]}"`
     end
   `git push --set-upstream origin "#{branch_name}"`
   `echo ::set-output name=branch_name::"#{branch_name}"`
