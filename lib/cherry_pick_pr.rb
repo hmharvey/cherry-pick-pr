@@ -16,5 +16,4 @@ if ENV["GITHUB_EVENT_NAME"] == "pull_request"
     end
   `git push --set-upstream origin "#{branch_name}"`
   `echo ::set-output name=branch_name::"#{branch_name}"`
-  puts `echo ::set-output name=branch_name::"#{branch_name}"`
 end
