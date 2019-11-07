@@ -1,11 +1,11 @@
 name: 'Cherry-pick PR'
 description: 'cherry-pick commits from a PR'
 author: 'hmharvey'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
 outputs:
   branch_name:
     description: 'new checked out branch'
     required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
 

@@ -15,5 +15,5 @@ if ENV["GITHUB_EVENT_NAME"] == "pull_request"
     `git cherry-pick #{commit["sha"]}`
     end
   `git push`
-  ENV["OUTPUT_BRANCH_NAME"] = branch_name
+  `echo "::set-output name=branch_name::#{branch_name}"`
 end
