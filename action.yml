@@ -4,3 +4,8 @@ author: 'hmharvey'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+outputs:
+  branch_name:
+    description: 'new checked out branch'
+    required: false
+

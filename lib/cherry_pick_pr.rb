@@ -5,7 +5,8 @@ require "open-uri"
 require "securerandom"
 
 if ENV["GITHUB_EVENT_NAME"] == "pull_request"
-  `git checkout -b "cherry-pick-#{SecureRandom.hex(10)}"` 
+  branch_name = ENV["INPUT_LABELS"]
+  `git checkout -b #{branch_name}` 
   payload = JSON.parse(File.read(ENV["GITHUB_EVENT_PATH"]))
   commits = JSON.parse(open(payload["pull_request"]["commits_url"]).read)
   commits.each do |commit|
@@ -14,4 +15,5 @@ if ENV["GITHUB_EVENT_NAME"] == "pull_request"
     `git cherry-pick #{commit["sha"]}`
     end
   `git push`
+  ENV["OUTPUT_BRANCH_NAME"] = branch_name
 end
