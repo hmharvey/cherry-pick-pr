@@ -14,6 +14,7 @@ if ENV["GITHUB_EVENT_NAME"] == "pull_request"
     `git config user.name "#{commit["commit"]["author"]["name"]}"`
     `git cherry-pick #{commit["sha"]}`
     end
-  `git push`
+  `git push --set-upstream origin "#{branch_name}"`
   `echo ::set-output name=branch_name::"#{branch_name}"`
+  puts `echo ::set-output name=branch_name::"#{branch_name}"`
 end
