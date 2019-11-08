@@ -8,10 +8,10 @@ if ENV["GITHUB_EVENT_NAME"] == "pull_request"
   payload = JSON.parse(File.read(ENV["GITHUB_EVENT_PATH"]))
 
   if payload["pull_request"]["head"]["repo"]["fork"]
-    `git remote add forked-repo "#{payload["pull_request"]["head"]["repo"]["clone_url"]}"`
-    `git fetch forked-repo`
-    puts "forked-repo"
-    puts "#{payload["pull_request"]["head"]["repo"]["clone_url"]}"
+#     `git remote add forked-repo "#{payload["pull_request"]["head"]["repo"]["clone_url"]}"`
+#     `git fetch forked-repo`
+#     puts "forked-repo"
+#     puts "#{payload["pull_request"]["head"]["repo"]["clone_url"]}"
   end
   
   branch_name = "cherry-pick-#{SecureRandom.hex(10)}"
