@@ -16,6 +16,11 @@ if ENV["GITHUB_EVENT_NAME"] == "pull_request"
     `git fetch forked-branch`
     puts "forked-branch"
     puts "#{payload["pull_request"]["head"]["repo"]["clone_url"]}"
+
+    `git remote add base-branch "#{payload["pull_request"]["base"]["repo"]["clone_url"]}"`
+    `git fetch base-branch`
+    puts "base-branch"
+    puts "#{payload["pull_request"]["base"]["repo"]["clone_url"]}"
   end
   
   branch_name = "cherry-pick-#{SecureRandom.hex(10)}"
