@@ -28,9 +28,9 @@ if ENV["GITHUB_EVENT_NAME"] == "pull_request"
   puts "before git push"
 #   `git push origin "#{branch_name}"`
 
-  remote_repo="https://#{ENV["GITHUB_ACTOR"]}:#{ENV["GITHUB_TOKEN"]}@github.com/#{ENV["REPOSITORY"]}.git"
+  remote_repo="https://#{ENV["GITHUB_ACTOR"]}:#{ENV["GITHUB_TOKEN"]}@github.com/#{ENV["GITHUB_REPOSITORY"]}.git"
   puts ENV["GITHUB_ACTOR"]
-  puts ENV["REPOSITORY"]
+  puts ENV["GITHUB_REPOSITORY"]
   `git push "#{remote_repo}" "#{branch_name}"` 
   puts "after git push"
 
