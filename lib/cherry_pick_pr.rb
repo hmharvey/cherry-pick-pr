@@ -26,7 +26,7 @@ if ENV["GITHUB_EVENT_NAME"] == "pull_request"
 #     end
 
   puts "before git push"
-  `git push --set-upstream origin "#{branch_name}"`
+  `git push origin "#{branch_name}"`
   puts "after git push"
 
   # delete remote if fork
