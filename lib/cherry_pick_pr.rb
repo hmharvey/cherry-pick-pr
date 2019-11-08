@@ -8,6 +8,9 @@ if ENV["GITHUB_EVENT_NAME"] == "pull_request"
   payload = JSON.parse(File.read(ENV["GITHUB_EVENT_PATH"]))
   commits = JSON.parse(open(payload["pull_request"]["commits_url"]).read)
 
+  puts payload
+  puts payload["repository"].keys
+  puts payload["repository"]
   if payload["repository"]["fork"]
     `git remote add forked-branch "#{payload["repository"]["clone_url"]}"`
     `git fetch forked-branch`
