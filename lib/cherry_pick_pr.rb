@@ -20,14 +20,13 @@ if ENV["GITHUB_EVENT_NAME"] == "pull_request"
   end
   
   branch_name = "cherry-pick-#{SecureRandom.hex(10)}"
-  puts `git branch`
-  `git checkout stable-branch`
+  puts `git status -b --porcelain`
   `git checkout -b "#{branch_name}"` 
 
   commits = JSON.parse(open(payload["pull_request"]["commits_url"]).read)
   commits.each do |commit|
-#    `git config user.email "#{commit["commit"]["author"]["email"]}"`
-#    `git config user.name "#{commit["commit"]["author"]["name"]}"`
+    `git config user.email "#{commit["commit"]["author"]["email"]}"`
+    `git config user.name "#{commit["commit"]["author"]["name"]}"`
     `git cherry-pick "#{commit["sha"]}"`
     end
 
